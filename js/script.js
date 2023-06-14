@@ -6,6 +6,8 @@
 const titleClickHandler = function(event){
   console.log('Link was clicked!');
 
+  event.preventDefault();
+  
   const clickedElement = this;
 
   const links = document.querySelectorAll('.titles a');
