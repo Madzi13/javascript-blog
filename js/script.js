@@ -1,10 +1,4 @@
-/*document.getElementById('test-button').addEventListener('click', function(){
-  const links = document.querySelectorAll('.titles a');
-  console.log('links:', links);
-}); /* guzik do linków */
-
 const titleClickHandler = function(event){
-  console.log('Link was clicked!');
 
   event.preventDefault();
   
@@ -12,50 +6,30 @@ const titleClickHandler = function(event){
 
   const links = document.querySelectorAll('.titles a');
 
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
+  for(let link of links){
+    link.addEventListener('click', titleClickHandler);
+  }
 
- /* remove class 'active' from all article links  */
+  const activeLinks = document.querySelectorAll('.titles a.active');
 
- const activeLinks = document.querySelectorAll('.titles a.active');
-
- for(let activeLink of activeLinks){
-   activeLink.classList.remove('active');
- }
-
- /* add class 'active' to the clicked link */
+  for(let activeLink of activeLinks){
+    activeLink.classList.remove('active');
+  }
  
- console.log('clickedElement:', clickedElement);
   clickedElement.classList.add('active');
 
+  const activeArticles = document.querySelectorAll('.posts article.active');
 
- /* remove class 'active' from all articles */
+  for(let activeArticle of activeArticles){
+    activeArticle.classList.remove('active');
+  }
 
- const activeArticles = document.querySelectorAll('.posts article.active');
-
- for(let activeArticle of activeArticles){
-   activeArticle.classList.remove('active');
- }
-
- /* get 'href' attribute from the clicked link */
-
- const articleSelector = clickedElement.getAttribute('href');
+  const articleSelector = clickedElement.getAttribute('href');
   console.log('articleSelector:', articleSelector);
 
- /* find the correct article using the selector (value of 'href' attribute) */
-
- const targetArticle = document.querySelector('a href #article-1');
+  const targetArticle = document.querySelector(articleSelector);
   console.log(targetArticle);
-    console.log('targetArticle:', targetArticle);
+  console.log('targetArticle:', targetArticle);
 
- /* add class 'active' to the correct article */
-
- targetArticle.classList.add('active');
-}
-
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
+  targetArticle.classList.add('active');
 }
