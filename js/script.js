@@ -9,8 +9,6 @@ const titleClickHandler = function(event){
   for(let activeLink of activeLinks){
     activeLink.classList.remove('active');
   }
- 
-  clickedElement.classList.add('active');
 
   const activeArticles = document.querySelectorAll('.posts article.active');
 
@@ -26,6 +24,7 @@ const titleClickHandler = function(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
+optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(customSelector = ''){
   // remove contents of titleList
@@ -62,3 +61,32 @@ function generateTitleLinks(customSelector = ''){
 }
 
 generateTitleLinks();
+//7.2
+function generateTags(){
+  
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+  /* find tags wrapper */
+
+  /* make html variable with empty string */
+
+  /* get tags from data-tags attribute */
+
+  /* split tags into array */
+
+  /* START LOOP: for each tag */
+
+  /* generate HTML of the link */
+
+  /* add generated code to html variable */
+
+  /* END LOOP: for each tag */
+
+  /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+generateTags();
