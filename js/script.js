@@ -32,11 +32,10 @@ function generateTitleLinks(customSelector = ''){
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
 
-  // for each article
   let html = '';
+
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
   for(let article of articles){
-
     // get the article id
     const articleId = article.getAttribute('id');
 
