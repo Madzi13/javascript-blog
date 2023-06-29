@@ -70,13 +70,14 @@ function generateTags(){
     const articleTags = article.getAttribute('data-tags');
 
     // split tags into array
-    const articleTagsArray = articleTags.split(' ');
+    const articleTagsArray = articleTags.split(', ');
+    console.log(articleTagsArray);
 
     // START LOOP: for each tag
     for(let tag of articleTagsArray){
 
       // generate HTML of the link
-      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const linkHTML = `<a href="#${tag}">${tag}</a>`;
 
       // add generated code to html variable
       html = html + linkHTML;
