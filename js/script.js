@@ -109,19 +109,25 @@ function tagClickHandler(event){
   console.log(tag);
   
   /* find all tag links with class active */
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
   /* START LOOP: for each active tag link */
+  activeTagLinks.forEach(function(link) {
 
-  /* remove class active */
-
+    /* remove class active */
+    link.classList.remove('active');
+  });
   /* END LOOP: for each active tag link */
 
   /* find all tag links with "href" attribute equal to the "href" constant */
+  const tagLinks = document.querySelectorAll(`a[href="${href}"]`);
 
   /* START LOOP: for each found tag link */
-
-  /* add class active */
-
+  tagLinks.forEach(function(link) {
+    
+    /* add class "active" */
+    link.classList.add('active');
+    
   /* END LOOP: for each found tag link */
 
   /* execute function "generateTitleLinks" with article selector as argument */
