@@ -54,8 +54,9 @@ function generateTitleLinks(customSelector = '') {
   }
 }
 generateTitleLinks();
-
-function generateTags(){
+function generateTags(customSelector = '') {
+  console.log(customSelector);
+ 
   // find all articles
   const articles = document.querySelectorAll(optArticleSelector);
 
@@ -120,26 +121,32 @@ function tagClickHandler(event){
   /* END LOOP: for each active tag link */
 
   /* find all tag links with "href" attribute equal to the "href" constant */
-  const tagLinks = document.querySelectorAll(`a[href="${href}"]`);
-
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+ 
   /* START LOOP: for each found tag link */
   tagLinks.forEach(function(link) {
     
     /* add class "active" */
     link.classList.add('active');
     
-  /* END LOOP: for each found tag link */
-
-  /* execute function "generateTitleLinks" with article selector as argument */
+    /* END LOOP: for each found tag link */
+  });  
+    
+    /* execute function "generateTitleLinks" with article selector as argument */
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  console.log(customSelector);
 }
 
 
 function addClickListenersToTags(){
   /* find all links to tags */
+  const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
+  tagLinks.forEach(function(link) {
 
     /* add tagClickHandler as event listener for that link */
+ link.addEventListener('click', tagClickHandler); }); 
 
   /* END LOOP: for each link */
 }
