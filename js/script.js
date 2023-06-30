@@ -133,9 +133,7 @@ function tagClickHandler(event){
     
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks(optArticleSelector);
-  
 }
-
 
 function addClickListenersToTags(){
   /* find all links to tags */
@@ -149,5 +147,66 @@ function addClickListenersToTags(){
 
   /* END LOOP: for each link */
 }
-
 addClickListenersToTags();
+
+function generateAuthors() {
+  // Wybierz element artykułu
+  const article = document.querySelector(optArticleSelector);
+  
+  // Wybierz wrapper autora
+  const authorWrapper = article.querySelector('.post-author');
+  
+  // Pobierz tekst autora
+  const author = authorWrapper.innerText;
+    
+  // Stwórz link autora
+  const authorLink = document.createElement('a');
+  authorLink.innerText = author;
+  authorLink.href = '#author-' + author;
+    
+  // Wyczyść wrapper autora i dodaj link autora
+  authorWrapper.innerHTML = '';
+  authorWrapper.appendChild(authorLink);
+  
+  // Ustaw atrybut data-author na artykule
+  article.setAttribute('data-author', author);
+}
+  
+function addClickListenersToAuthors() {
+  // Wybierz linki do autorów
+  const authorLinks = document.querySelectorAll('a[href^="#author-"]');
+  
+  // Dodaj nasłuchiwacz kliknięcia do każdego linka autora
+  authorLinks.forEach(function(authorLink) {
+    authorLink.addEventListener('click', authorClickHandler);
+  });
+}
+  
+function authorClickHandler(event) {
+  // Zapobiegnij domyślnej akcji przeglądarki
+  event.preventDefault();
+  
+  // Pobierz kliknięty element
+  const clickedElement = this;
+  
+  // Pobierz nazwę autora z atrybutu href klikniętego linka
+  const author = clickedElement.getAttribute('href').substring(8);
+  
+  // Wybierz wszystkie artykuły
+  const articles = document.querySelectorAll(optArticleSelector);
+    
+  // Sprawdź każdy artykuł, czy ma takiego samego autora
+  articles.forEach(function (article) {
+    if (article.getAttribute('data-author') === author) {
+      // Jeśli taki sam autor, pokaż artykuł
+      article.style.display = '';
+    } else {
+      // Jeśli inny autor, ukryj artykuł
+      article.style.display = 'none';
+    }
+  });
+}  
+
+// Wywołaj funkcje
+generateAuthors();
+addClickListenersToAuthors();
