@@ -1,5 +1,3 @@
-'use strict';
-
 // Function that handles the click event on the article titles
 const titleClickHandler = function(event) {
   event.preventDefault();
@@ -93,6 +91,7 @@ function generateTags(customSelector = '') {
 }
 
 generateTags();
+
 
 function tagClickHandler(event){
 
@@ -208,5 +207,8 @@ function authorClickHandler(event) {
 }  
 
 // Wywołaj funkcje
+generateTags();
+addClickListenersToTags();
+generateTitleLinks();
 generateAuthors();
 addClickListenersToAuthors();
