@@ -184,62 +184,62 @@ function generateTags(customSelector = '') {
   addClickListenersToTags();
 
   function generateAuthors() {
-  // Wybierz element artykułu
+  // Select the article element
     const article = document.querySelector(optArticleSelector);
   
-    // Wybierz wrapper autora
+    // Select the author wrapper
     const authorWrapper = article.querySelector('.post-author');
   
-    // Pobierz tekst autora
+    // Get the author text 
     const author = authorWrapper.innerText;
     
-    // Stwórz link autora
+    // Create an author link
     const authorLink = document.createElement('a');
     authorLink.innerText = author;
     authorLink.href = '#author-' + author;
     
-    // Wyczyść wrapper autora i dodaj link autora
+    //  Clear the author wrapper and add the author link
     authorWrapper.innerHTML = '';
     authorWrapper.appendChild(authorLink);
   
-    // Ustaw atrybut data-author na artykule
+    // Set the data-author attribute on the article
     article.setAttribute('data-author', author);
   
     function addClickListenersToAuthors() {
-    // Wybierz linki do autorów
+    // Select all author links
       const authorLinks = document.querySelectorAll('a[href^="#author-"]');
   
-      // Dodaj nasłuchiwacz kliknięcia do każdego linka autora
+      // Add a click listener to each author link
       authorLinks.forEach(function(authorLink) {
         authorLink.addEventListener('click', authorClickHandler);
       });
     }
   
     function authorClickHandler(event) {
-    // Zapobiegnij domyślnej akcji przeglądarki
+    // Prevent the default browser action
       event.preventDefault();
   
-      // Pobierz kliknięty element
+      // Get the clicked element
       const clickedElement = this;
   
-      // Pobierz nazwę autora z atrybutu href klikniętego linka
+      // Get the author name from the href attribute of the clicked link
       const author = clickedElement.getAttribute('href').substring(8);
   
-      // Wybierz wszystkie artykuły
+      // Select all articles
       const articles = document.querySelectorAll(optArticleSelector);
     
-      // Sprawdź każdy artykuł, czy ma takiego samego autora
+      // Check each article if it has the same author
       articles.forEach(function (article) {
         if (article.getAttribute('data-author') === author) {
-        // Jeśli taki sam autor, pokaż artykuł
+        // If same author, show the article
           article.style.display = '';
         } else {
-        // Jeśli inny autor, ukryj artykuł
+        // If different author, hide the article
           article.style.display = 'none';
         }
       });
     }
-    // Wywołaj funkcje
+    // Call the functions 
     generateTags();
     addClickListenersToTags();
     generateTitleLinks();
