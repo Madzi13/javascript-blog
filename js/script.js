@@ -34,6 +34,8 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optTagsListSelector = '.tags.list',
   optAuthorSelector = '.post-author',
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-',
   optAuthorsListSelector = '.authors.list';
 
 
